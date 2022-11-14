@@ -25,6 +25,8 @@ timer <- R6::R6Class(
         time_left <- self$seconds - calc_diff_time(Sys.time(), self$start_time)
         print(seconds_to_display(time_left))
         Sys.sleep(1)
+
+        on.exit({self$seconds <- time_left})
       }
       print("Done!")
     }
